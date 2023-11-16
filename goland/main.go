@@ -1,29 +1,15 @@
 package main
 
+// import control "universe-players/controllers"
 import (
 	"fmt"
-	"net/http"
-	"os"
+	connector "universe-players/Connectors"
+	control "universe-players/controllers"
 )
 
-const serverPort = 80
-
 func main() {
-	sendRequest()
-}
-
-// send request to ifconfi.me
-func sendRequest() {
-	requestURL := fmt.Sprintf("http://ifconfig.me:%d", serverPort)
-	res, err := http.Get(requestURL)
-	if err != nil {
-		fmt.Printf("error making http request: %s\n", err)
-		os.Exit(1)
-	}
-
-	fmt.Printf("client: got response!\n")
-	//print response
-	res.Write(os.Stdout)
-	fmt.Printf("client: status code: %d\n", res.StatusCode)
+	control.Storm("https://ifconfig.me")
+	res := connector.GetIp("https://ifconfig.me")
+	fmt.Println("Result : ", res)
 
 }
