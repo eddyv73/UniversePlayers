@@ -1,21 +1,18 @@
-use http::{Request, Response};
-use curl::easy::Easy;
-use std::io::Write;
+// Implementación simplificada sin dependencias externas
+// Para usar curl o reqwest, descomentar las dependencias en Cargo.toml
 
-pub fn make_Request(url: &str) {
-    let mut easy = Easy::new();
-    easy.url(url).unwrap();
-    easy.write_function(|data| {
-        Ok(std::io::stdout().write(data).unwrap())
-    }).unwrap();
-    let content = easy.perform().unwrap();
-    println!("{:?}", content);
+pub fn make_request(url: &str) {
+    println!("Simulando petición HTTP a: {}", url);
+    println!("Nota: Esta es una implementación simplificada.");
+    println!("Para hacer peticiones HTTP reales, instalar dependencias:");
+    println!("  - reqwest (recomendado)");
+    println!("  - curl");
+    println!("  - ureq");
 }
 
-
-pub fn request_Message (url: &str) {
-    
-    //concatenate this string with the url
+pub fn request_message(url: &str) {
+    // Crear mensaje HTTP básico
     let request = format!("GET / HTTP/1.1\r\nHost: {}\r\n\r\n", url);
+    println!("Mensaje HTTP generado:");
     println!("{}", request);
 }
