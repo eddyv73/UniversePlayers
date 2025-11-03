@@ -12,3 +12,11 @@ Cargo.lock
 
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
+
+# Go binaries and build artifacts
+goland/universe-players
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
